@@ -22,7 +22,7 @@ api_key = os.getenv("HF_API_KEY")
 # llm_model = HuggingFaceEndpoint(repo_id=repo_id, max_length=128, temperature=0.7, token=api_key, )
 
 # Initialize the tokenizer and model for Mistral
-tokenizer = AutoTokenizer.from_pretrained("openai-community/gpt2", use_auth_token=api_key)
+tokenizer = AutoTokenizer.from_pretrained("openai-community/gpt2", token=api_key)
 # tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-Instruct-v0.3")
 llm_model = AutoModelForCausalLM.from_pretrained("openai-community/gpt2")
 
