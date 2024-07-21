@@ -1,59 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Umar's Student Placement Prediction</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction and Chat App</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 50px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .form-container {
-            max-width: 500px;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-        }
-        .form-container input {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0 20px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        .form-container input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-        }
-        .form-container input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-        .result {
-            font-size: 1.5em;
-            color: #7a71ed;
-            text-align: center;
+        .container {
+            width: 80%;
+            max-width: 800px;
             margin-top: 20px;
+        }
+        .prediction-form, .chat-form {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+        }
+        .response {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
         }
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <h2>Umar's Student Placement Prediction</h2>
-        <form action="/predict" method="post">
-            <label for="IQ">IQ:</label>
-            <input type="number" name="IQ" required>
-            
-            <label for="CGPA">CGPA:</label>
-            <input type="number" step="0.01" name="CGPA" required>
-            
-            <input type="submit" value="Predict">
-        </form>
-        {% if prediction_text %}
-        <div class="result">{{ prediction_text }}</div>
-        {% endif %}
+    <div class="container">
+        <h1>Prediction and Chat App</h1>
+
+        <!-- Prediction Form -->
+        <div class="prediction-form">
+            <h2>Logistic Regression Prediction</h2>
+            <form action="/predict" method="post">
+                <input type="text" name="feature1" placeholder="Enter feature 1">
+                <input type="text" name="feature2" placeholder="Enter feature 2">
+                <!-- Add more features as needed -->
+                <input type="submit" value="Predict">
+            </form>
+            {% if prediction_text %}
+            <div class="response">{{ prediction_text }}</div>
+            {% endif %}
+        </div>
+
+        <!-- Chat Form -->
+        <div class="chat-form">
+            <h2>Chat with LLM</h2>
+            <form action="/chat" method="post">
+                <input type="text" name="chat_input" placeholder="Enter your message">
+                <input type="submit" value="Send">
+            </form>
+            {% if chat_response %}
+            <div class="response">{{ chat_response }}</div>
+            {% endif %}
+        </div>
     </div>
 </body>
 </html>
