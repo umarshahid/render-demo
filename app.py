@@ -16,7 +16,6 @@ with open(model_path, 'rb') as file:
 app = Flask(__name__)
 
 api_key = os.getenv("HF_API_KEY")
-# api_key = "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"
 # print(f"API Key: {api_key}")
 # repo_id = "mistralai/Mistral-7B-Instruct-v0.3"
 # llm_model = HuggingFaceEndpoint(repo_id=repo_id, max_length=128, temperature=0.7, token=api_key, )
